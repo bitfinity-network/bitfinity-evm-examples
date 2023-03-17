@@ -1,0 +1,118 @@
+# Pets-Shop-Bitfinity-Example [WIP]
+
+Originally cloned from [truffle-box-pet-shop](https://github.com/truffle-box/pet-shop-box).
+
+Your first dapp- an adoption tracking system for a pet shop. The complete tutorial from Truffle can be found [here](http://truffleframework.com/tutorials/pet-shop).
+
+# Setting up the development environment
+There are a few technical requirements before we start. Please install the following:
+
+    Node.js v6+ LTS and npm (comes with Node)
+    Git
+
+# Environment
+```bash
+$ node -v
+v10.23.0\
+$ npm -v
+6.14.8
+
+$ truffle version
+
+Truffle v5.1.37
+
+Solidity v0.5.17 (solc-js)
+```
+# Ganache
+Latest
+
+# MetMask version
+Latest
+
+# Instructions:
+1. Download the complete repository and go to the folder in your terminal.
+
+3. Compile and migrate the smart contracts. Note inside the development console we don't preface commands with truffle.
+```bash
+npm i
+export  MNEMONIC='YOUR MNEMONIC HERE'
+# For Görli, set the INFURA_TOKEN
+export INFURA_TOKEN='YOUR INFURA TOKEN HERE'
+# Update the deployer `from` address in truffle.js
+yarn compile
+yarn deploy:bitfinity
+```
+
+4. Validate that contract is working on Bitfinity:
+```bash
+truffle console --network bitfinity                                                          
+truffle(bitfinity)> let adoption = await Adoption.deployed()
+undefined
+truffle(bitfinity)> adoption.getAdopters()
+[
+  '0x0000000000000000000000000000000000000000',
+  '0x6A33382de9f73B846878a57500d055B981229ac4',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000'
+]
+truffle(bitfinity)> await adoption.adopt(12)
+{
+  tx: '0x151690edd24c64274f7b512b716c0150818f42c23ac4b8d527a3eb19d7a7a606',
+  receipt: {
+    blockNumber: 48355361,
+    blockHash: '0x8fa6c9def82f3f67251036d3a0ae553cb9e5cac773a337d220e631431dba2844',
+    transactionIndex: 0,
+    transactionHash: '0x151690edd24c64274f7b512b716c0150818f42c23ac4b8d527a3eb19d7a7a606',
+    from: '0x6a33382de9f73b846878a57500d055b981229ac4',
+    to: '0x6febd731226188673c0f733d9a73c431c22f1723',
+    gasUsed: 42421,
+    cumulativeGasUsed: 0,
+    contractAddress: null,
+    logs: [],
+    logsBloom: '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
+    status: true,
+    nearTransactionHash: '0x8f76cb0532c498ea4c04494d9aee270171d38d6aa5e8a3a3c7ca63c99251df66',
+    nearReceiptHash: '0x288b89eaf4ea37fc84c88e1477db0212f02ccda3ffddcad2ec0496f9f537b9cc',
+    rawLogs: []
+  },
+  logs: []
+}
+truffle(bitfinity)> adoption.getAdopters()
+[
+  '0x0000000000000000000000000000000000000000',
+  '0x6A33382de9f73B846878a57500d055B981229ac4',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x6A33382de9f73B846878a57500d055B981229ac4',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000',
+  '0x0000000000000000000000000000000000000000'
+]
+truffle(bitfinity)> 
+``` 
+
+5. Open another ternminal and Run the `liteserver` development server (outside the development console) for front-end hot reloading. Smart contract changes must be manually recompiled and migrated. It serves the front-end on http://localhost:3000
+
+```bash
+npm run dev
+```
