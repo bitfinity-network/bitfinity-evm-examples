@@ -82,7 +82,7 @@ below in the `bitfinity` network section:
 ...
 bitfinity: {
   provider: () => setupWallet('https://testnet.bitfinity.dev'),
-  network_id: 0x4e454153,
+  network_id: 0x56b29,
   gas: 10000000,
   from: '0x6A33382de9f73B846878a57500d055B981229ac4' // CHANGE THIS ADDRESS
 },
