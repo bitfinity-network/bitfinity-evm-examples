@@ -1,6 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
 
-// Replace this private key with your Ropsten account private key
+// Replace this private key with your Bitfinity account private key
 // To export your private key from Metamask, open Metamask and
 // go to Account Details > Export Private Key
 // Be aware of NEVER putting real Ether into testing accounts
@@ -29,14 +29,10 @@ module.exports = {
       url: 'https://testnet.bitfinity.dev',
       accounts: [`0x${BITFINITY_PRIVATE_KEY}`]
     },
-    develop_bitfinity: {
-      url: 'https://develop.rpc.testnet.bitfinity.dev:8545',
+    local_bitfinity: {
+      url: 'http://127.0.0.1:8545',
       accounts: [`0x${BITFINITY_PRIVATE_KEY}`]
     },
-    ropsten: {
-      url: 'https://rpc.testnet.bitfinity.dev:8545',
-      accounts: [`0x${BITFINITY_PRIVATE_KEY}`]
-    }
   }
 };
 
