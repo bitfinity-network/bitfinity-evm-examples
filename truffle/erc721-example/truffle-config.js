@@ -24,20 +24,12 @@ module.exports = {
     },
     bitfinity: {
       provider: () => setupWallet('https://testnet.bitfinity.dev'),
-      network_id: '1313161555',
-      gas: 10000000,
+      network_id: '355113',
       from: setupWallet('https://testnet.bitfinity.dev').addresses[0],
       deploymentPollingInterval: 8000,
       timeoutBlocks: 500,
       confirmations: 10,
     },
-    goerli: {
-      provider: () => setupWallet(`https://goerli.infura.io/v3/${process.env.INFURA_TOKEN}`),
-      network_id: '5',
-      from: '0x6A33382de9f73B846878a57500d055B981229ac4',
-      gas: 3 * 1000000,
-      gasPrice: utils.toWei('8', 'gwei')
-    }
   },
 
   // Set default mocha options here, use special reporters etc.

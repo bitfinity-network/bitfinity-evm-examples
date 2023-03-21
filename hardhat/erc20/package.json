@@ -8,7 +8,7 @@
     "compile": "npx hardhat compile",
     "test": "",
     "deploy:bitfinity": "yarn clean && yarn compile && npx hardhat run scripts/deploy.js --network testnet_bitfinity",
-    "deploy:ropsten": "yarn clean && yarn compile && npx hardhat run scripts/deploy.js --network ropsten"
+    "deploy:local": "yarn clean && yarn compile && npx hardhat run scripts/deploy.js --network local_bitfinity"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.2",
