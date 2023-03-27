@@ -22,7 +22,7 @@ module.exports = {
       chainId: 355113,
     },
     local_bitfinity: {
-      url: 'http://localhost:8545',
+      url: 'http://127.0.0.1:8545',
       accounts: [`0x${BITFINITY_PRIVATE_KEY}`],
       chainId: 355113,
     },
