@@ -10,7 +10,7 @@ task('transferFrom', 'ERC20 transferFrom')
     const watermelonToken = await ethers.getContractFactory('WatermelonToken');
     const watermelon = watermelonToken.attach(token);
     const [recipient] = await ethers.getSigners();
-    console.log(recipient.address);
+
     const tx = await watermelon.populateTransaction.transferFrom(
       sender,
       recipient.address,
