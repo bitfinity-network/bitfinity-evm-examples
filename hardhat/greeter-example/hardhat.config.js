@@ -1,4 +1,4 @@
-require("@nomiclabs/hardhat-waffle");
+require('@nomiclabs/hardhat-waffle');
 
 // Replace this private key with your Bitfinity account private key
 // To export your private key from Metamask, open Metamask and
@@ -12,23 +12,22 @@ module.exports = {
   solidity: {
     compilers: [
       {
-        version: "0.8.0"
+        version: '0.8.0',
       },
       {
-        version: "<0.9.0",
-        settings: { } 
-      }
-    ]
+        version: '<0.9.0',
+        settings: {},
+      },
+    ],
   },
   networks: {
     testnet_bitfinity: {
       url: 'https://testnet.bitfinity.dev',
-      accounts: [`0x${BITFINITY_PRIVATE_KEY}`]
+      accounts: [`0x${BITFINITY_PRIVATE_KEY}`],
     },
     develop_bitfinity: {
-      url: 'https://develop.rpc.testnet.bitfinity.dev:8545',
-      accounts: [`0x${BITFINITY_PRIVATE_KEY}`]
+      url: 'http://127.0.0.1:8545',
+      accounts: [`0x${BITFINITY_PRIVATE_KEY}`],
     },
-  }
+  },
 };
-

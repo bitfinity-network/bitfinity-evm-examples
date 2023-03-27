@@ -4,7 +4,7 @@
   "scripts": {
     "clean": "rm -rf ./artifacts/ ./cache/",
     "compile": "npx hardhat compile",
-    "test": "",
+    "test": "yarn jest",
     "deploy:bitfinity": "yarn clean && yarn compile && npx hardhat run scripts/deploy.js --network testnet_bitfinity",
     "deploy:local": "yarn clean && yarn compile && npx hardhat run scripts/deploy.js --network local_bitfinity"
   },
@@ -17,6 +17,7 @@
     "hardhat": "^2.2.1"
   },
   "dependencies": {
-    "dotenv": "^9.0.2"
+    "dotenv": "^9.0.2",
+    "jest": "^29.5.0"
   }
 }
