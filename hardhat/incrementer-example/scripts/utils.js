@@ -33,9 +33,9 @@ async function incrementCounter(provider, incrementerAddress) {
     gasLimit: 1000000,
     nonce: await deployerWallet.getTransactionCount(),
   };
-  const incrementer = await Incrementer.attach(incrementerAddress).connect(
-    deployerWallet
-  );
+
+  const incrementer =
+    Incrementer.attach(incrementerAddress).connect(deployerWallet);
 
   console.log(
     'Counter value in Incrementer before incrementation: ',
@@ -43,7 +43,13 @@ async function incrementCounter(provider, incrementerAddress) {
   );
 
   console.log('Increment the counter..');
-  await incrementer.increment();
+  const tx = await incrementer.populateTransaction.increment();
+  const txResponse = await deployerWallet.sendTransaction({
+    nonce: await deployerWallet.getTransactionCount(),
+    ...tx,
+  });
+
+  await txResponse.wait();
 
   console.log(
     'Counter value in Incrementer after incrementation: ',
