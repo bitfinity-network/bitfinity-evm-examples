@@ -9,22 +9,23 @@
   "scripts": {
     "dev": "lite-server",
     "clean": "rm -rf ./build/",
-    "compile": "truffle compile",
+    "compile": "truffle compile --network $NETWORK",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "yarn run deploy:development",
     "deploy:development": "yarn run clean && yarn run compile && export NETWORK='development' && truffle migrate",
-    "deploy:bitfinity": "yarn run clean && yarn run compile && export NETWORK='bitfinity' && truffle migrate --network bitfinity",
-    "deploy:testnet": "yarn run clean && yarn run compile && export NETWORK='testnet' && truffle migrate --network testnet"
+    "deploy:bitfinity": "yarn run clean && export NETWORK='bitfinity' && yarn run compile && truffle migrate --network bitfinity",
+    "deploy:local": "yarn run clean && export NETWORK='local' && yarn run compile && truffle migrate --network local"
   },
   "author": "dev@bitfinity.dev",
   "license": "ISC",
   "devDependencies": {
-    "lite-server": "^2.3.0",
     "@truffle/hdwallet-provider": "^2.0.3",
+    "lite-server": "^2.3.0",
     "web3": "^1.2.9",
     "web3-provider-engine": "~15.0.12"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
     "truffle-contract": "^4.0.31"
   }
 }

@@ -38,6 +38,14 @@ echo "BITFINITY_PRIVATE_KEY=YOUR_BITFINITY_PRIVATE_KEY_HERE" >> .env
 yarn install
 ```
 
+## Mint Native Tokens
+
+The following BITFINITY endpoint will mint some native tokens for you so that you can execute the deployment and the transactions.
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","method":"ic_mintEVMToken","params":["YOUR_ADDRESS", "AMOUNT_IN_HEX"],"id":1}' https://testnet.bitfinity.dev
+```
+
 ## Deploy ERC-20
 
 The ERC-20 example is about a naive Watermelon token 🍉. You can exchange
