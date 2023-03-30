@@ -1,15 +1,16 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider');
-const NonceTrackerSubprovider = require('web3-provider-engine/subproviders/nonce-tracker');
-const utils = require('web3-utils');
 require('dotenv').config();
+
+// Add 3 private keys to .env file
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const PRIVATE_KEY_2 = process.env.PRIVATE_KEY_2;
+const PRIVATE_KEY_3 = process.env.PRIVATE_KEY_3;
 
 const setupWallet = (url) => {
   return new HDWalletProvider({
-    privateKeys: [PRIVATE_KEY],
+    privateKeys: [PRIVATE_KEY, PRIVATE_KEY_2, PRIVATE_KEY_3],
     providerOrUrl: url,
     numberOfAddresses: 3,
-    shareNonce: true,
   });
 };
 
@@ -43,6 +44,7 @@ module.exports = {
   // Set default mocha options here, use special reporters etc.
   mocha: {
     timeout: 100000,
+    useColors: true,
   },
 
   // Configure your compilers
