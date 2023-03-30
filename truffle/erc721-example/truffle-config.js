@@ -1,17 +1,36 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 require('dotenv').config();
-
-// Add 3 private keys to .env file
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
-const PRIVATE_KEY_2 = process.env.PRIVATE_KEY_2;
-const PRIVATE_KEY_3 = process.env.PRIVATE_KEY_3;
+const numberOfAddresses = 3;
+const MNEMONIC = process.env.MNEMONIC;
 
 const setupWallet = (url) => {
-  return new HDWalletProvider({
-    privateKeys: [PRIVATE_KEY, PRIVATE_KEY_2, PRIVATE_KEY_3],
+  const wallet = new HDWalletProvider({
+    mnemonic: MNEMONIC,
     providerOrUrl: url,
-    numberOfAddresses: 3,
+    numberOfAddresses,
   });
+
+  mintAccounts(wallet);
+  return wallet;
+};
+
+const mintAccounts = (wallet) => {
+  const addresses = wallet.addresses;
+
+  for (let i = 0; i < addresses.length; i++) {
+    const address = addresses[i];
+    const amount = utils.toWei('1', 'ether');
+
+    wallet.sendAsync(
+      {
+        method: 'ic_mintEVMToken',
+        params: [address, amount],
+        id: 1,
+        jsonrpc: '2.0',
+      },
+      (_) => {}
+    );
+  }
 };
 
 module.exports = {

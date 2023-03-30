@@ -1,26 +1,49 @@
-const HDWalletProvider = require('@truffle/hdwallet-provider')
-const NonceTrackerSubprovider = require('web3-provider-engine/subproviders/nonce-tracker')
-const utils = require('web3-utils')
-const MNEMONIC = process.env.MNEMONIC
-const hdWalletStartIndex = 0
-const numberOfAddresses = 3
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+const { default: Web3 } = require('web3');
+const NonceTrackerSubprovider = require('web3-provider-engine/subproviders/nonce-tracker');
+require('dotenv').config();
+const utils = require('web3-utils');
+const MNEMONIC = process.env.MNEMONIC;
+const hdWalletStartIndex = 0;
+const numberOfAddresses = 3;
 
 const setupWallet = (url) => {
-  return new HDWalletProvider({
+  const wallet = new HDWalletProvider({
     mnemonic: MNEMONIC,
     providerOrUrl: url,
-    numberOfAddresses
+    numberOfAddresses,
   });
-}
+  mintAccounts(wallet); // This will mint 1 Native Token to each address
+  return wallet;
+};
+
+const mintAccounts = (wallet) => {
+  const addresses = wallet.addresses;
+
+  for (let i = 0; i < addresses.length; i++) {
+    const address = addresses[i];
+    const amount = utils.toWei('1', 'ether');
+
+    wallet.sendAsync(
+      {
+        method: 'ic_mintEVMToken',
+        params: [address, amount],
+        id: 1,
+        jsonrpc: '2.0',
+      },
+      (_) => {}
+    );
+  }
+};
 
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
   // for more about customizing your Truffle configuration!
   networks: {
     development: {
-      host: "127.0.0.1",
+      host: '127.0.0.1',
       port: 8545,
-      network_id: "*" // Match any network id
+      network_id: '*', // Match any network id
     },
     bitfinity: {
       provider: () => setupWallet('https://testnet.bitfinity.dev'),
@@ -30,10 +53,13 @@ module.exports = {
       timeoutBlocks: 500,
       confirmations: 10,
     },
-    testnet: {
-      provider: () => setupWallet('http://localhost:8545'),
-      network_id: 0x56b29,
-      from: '0x6A33382de9f73B846878a57500d055B981229ac4',
+    local: {
+      provider: () => setupWallet('http://127.0.0.1:8545'),
+      network_id: '355113',
+      from: setupWallet('http://127.0.0.1:8545').addresses[0],
+      deploymentPollingInterval: 8000,
+      timeoutBlocks: 500,
+      disableConfirmationListener: true,
     },
-  }
+  },
 };

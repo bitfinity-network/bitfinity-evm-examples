@@ -5,12 +5,14 @@ Originally cloned from [truffle-box-pet-shop](https://github.com/truffle-box/pet
 Your first dapp- an adoption tracking system for a pet shop. The complete tutorial from Truffle can be found [here](http://truffleframework.com/tutorials/pet-shop).
 
 # Setting up the development environment
+
 There are a few technical requirements before we start. Please install the following:
 
     Node.js v6+ LTS and npm (comes with Node)
     Git
 
 # Environment
+
 ```bash
 $ node -v
 v10.23.0\
@@ -23,27 +25,28 @@ Truffle v5.1.37
 
 Solidity v0.5.17 (solc-js)
 ```
-# Ganache
-Latest
 
 # MetMask version
+
 Latest
 
-# Instructions:
+# Instructions
+
 1. Download the complete repository and go to the folder in your terminal.
 
 3. Compile and migrate the smart contracts. Note inside the development console we don't preface commands with truffle.
+
 ```bash
 npm i
 export  MNEMONIC='YOUR MNEMONIC HERE'
-# For Görli, set the INFURA_TOKEN
-export INFURA_TOKEN='YOUR INFURA TOKEN HERE'
+
 # Update the deployer `from` address in truffle.js
 yarn compile
 yarn deploy:bitfinity
 ```
 
 4. Validate that contract is working on Bitfinity:
+
 ```bash
 truffle console --network bitfinity                                                          
 truffle(bitfinity)> let adoption = await Adoption.deployed()
@@ -67,7 +70,7 @@ truffle(bitfinity)> adoption.getAdopters()
   '0x0000000000000000000000000000000000000000',
   '0x0000000000000000000000000000000000000000'
 ]
-truffle(bitfinity)> await adoption.adopt(12)
+truffle(bitfinity)> await adoption.adopt(12, { nonce: await web3.eth.getTransactionCount(accounts[0])})
 {
   tx: '0x151690edd24c64274f7b512b716c0150818f42c23ac4b8d527a3eb19d7a7a606',
   receipt: {
@@ -109,9 +112,9 @@ truffle(bitfinity)> adoption.getAdopters()
   '0x0000000000000000000000000000000000000000'
 ]
 truffle(bitfinity)> 
-``` 
+```
 
-5. Open another ternminal and Run the `liteserver` development server (outside the development console) for front-end hot reloading. Smart contract changes must be manually recompiled and migrated. It serves the front-end on http://localhost:3000
+5. Open another ternminal and Run the `liteserver` development server (outside the development console) for front-end hot reloading. Smart contract changes must be manually recompiled and migrated. It serves the front-end on <http://localhost:3000>
 
 ```bash
 npm run dev
