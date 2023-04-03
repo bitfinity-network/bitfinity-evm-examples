@@ -136,17 +136,32 @@ them to any Ethereum address. In the following script, the minter address
 will mint (implicitly) and transfer `10 WTM` tokens to the `spender` address:
 
 ```javascript
-task("transfer", "ERC-20 transfer")
-    .addParam("token", "Token address")
-    .addParam("spender", "Spender address")
-    .addParam("amount", "Token amount")
-    .setAction(async function ({ token, spender, amount }, { ethers: { getSigners } }, runSuper) {
-        const watermelonToken = await ethers.getContractFactory("WatermelonToken")
-        const watermelon = watermelonToken.attach(token)
-        const [minter] = await ethers.getSigners();
-        await (await watermelon.connect(minter).transfer(spender, amount)).wait()
-        console.log(`${minter.address} has transferred ${amount} to ${spender}`);
+task('transfer', 'ERC20 transfer')
+  .addParam('token', 'Token address')
+  .addParam('spender', 'Spender address')
+  .addParam('amount', 'Token amount')
+  .setAction(async function (
+    { token, spender, amount },
+    { ethers: { getSigners } },
+    runSuper
+  ) {
+    const watermelonToken = await ethers.getContractFactory('WatermelonToken');
+    const watermelon = watermelonToken.attach(token);
+    const [minter] = await ethers.getSigners();
+
+    const tx = await watermelon.populateTransaction.transfer(spender, amount);
+    const txResponse = await minter.sendTransaction({
+      nonce: await minter.getTransactionCount(),
+      ...tx,
     });
+
+    await txResponse.wait();
+
+    console.log(
+      `${minter.address} has transferred ${amount} tokens to ${spender}`
+    );
+  });
+
 ```
 
 To call `transfer`, use the following command:
@@ -189,17 +204,30 @@ to specific recipient address later. This can be done by calling `approve`
 then calling `transferFrom`.
 
 ```javascript
-task("approve", "ERC-20 approve")
-    .addParam("token", "Token address")
-    .addParam("spender", "Spender address")
-    .addParam("amount", "Token amount")
-    .setAction(async function ({ token, spender, amount }, { ethers: { getSigners } }, runSuper) {
-        const watermelonToken = await ethers.getContractFactory("WatermelonToken")
-        const watermelon = watermelonToken.attach(token)
-        const [sender] = await ethers.getSigners();
-        await (await watermelon.connect(sender).approve(spender, amount)).wait()
-        console.log(`${sender.address} has approved ${amount} tokens to ${spender}`);
+task('approve', 'ERC20 approve')
+  .addParam('token', 'Token address')
+  .addParam('spender', 'Spender address')
+  .addParam('amount', 'Token amount')
+  .setAction(async function (
+    { token, spender, amount },
+    { ethers: { getSigners } },
+    runSuper
+  ) {
+    const watermelonToken = await ethers.getContractFactory('WatermelonToken');
+    const watermelon = watermelonToken.attach(token);
+    const [sender] = await ethers.getSigners();
+    const tx = await watermelon.populateTransaction.approve(spender, amount);
+
+    const txResponse = await sender.sendTransaction({
+      nonce: await sender.getTransactionCount(),
+      ...tx,
     });
+
+    await txResponse.wait();
+    console.log(
+      `${sender.address} has approved ${amount} tokens to ${spender}`
+    );
+  });
 
 module.exports = {};
 ```
@@ -217,18 +245,35 @@ After approving the tokens, a recipient can call `transferFrom` to move
 the `allowance` to his account.  
 
 ```javascript
-task("transferFrom", "ERC-20 transferFrom")
-    .addParam("token", "Token address")
-    .addParam("sender", "Sender address")
-    .addParam("amount", "Token amount")
-    .setAction(async function ({ token, sender, amount }, { ethers: { getSigners } }, runSuper) {
-        const watermelonToken = await ethers.getContractFactory("WatermelonToken")
-        const watermelon = watermelonToken.attach(token)
-        const [recipient] = await ethers.getSigners()
-        console.log(recipient.address);
-        await (await watermelon.connect(recipient).transferFrom(sender, recipient.address, amount)).wait()
-        console.log(`${recipient.address} has received ${amount} tokens from ${sender}`)
+task('transferFrom', 'ERC20 transferFrom')
+  .addParam('token', 'Token address')
+  .addParam('sender', 'Sender address')
+  .addParam('amount', 'Token amount')
+  .setAction(async function (
+    { token, sender, amount },
+    { ethers: { getSigners } },
+    runSuper
+  ) {
+    const watermelonToken = await ethers.getContractFactory('WatermelonToken');
+    const watermelon = watermelonToken.attach(token);
+    const [recipient] = await ethers.getSigners();
+
+    const tx = await watermelon.populateTransaction.transferFrom(
+      sender,
+      recipient.address,
+      amount
+    );
+    const txResponse = await recipient.sendTransaction({
+      nonce: await recipient.getTransactionCount(),
+      ...tx,
     });
+
+    await txResponse.wait();
+
+    console.log(
+      `${recipient.address} has received ${amount} tokens from ${sender}`
+    );
+  });
 ```
 
 To call `transferFrom`, use the following command:
