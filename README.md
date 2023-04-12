@@ -5,8 +5,6 @@ This repository includes DApp boilerplates for [truffle](https://www.trufflesuit
 - Integration with Metamask
 - Running DApp on Bitfinity network
 
-NOTE: Please use endpoint https://4fe7g-7iaaa-aaaak-aegcq-cai.raw.ic0.app instead of https://testnet.bitfinity.network
-
 ## Prerequisites
 - Node 12+
 
