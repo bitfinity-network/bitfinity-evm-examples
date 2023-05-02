@@ -10,7 +10,7 @@ Add your Bitfinity Private key (from Metamask) to __.env__ file: <br/>
 The following BITFINITY endpoint will mint some native tokens for you so that you can execute the deployment and the transactions.
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","method":"ic_mintEVMToken","params":["YOUR_ADDRESS", "AMOUNT_IN_HEX"],"id":1}' https://testnet.bitfinity.dev
+curl -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","method":"ic_mintEVMToken","params":["YOUR_ADDRESS", "AMOUNT_IN_HEX"],"id":1}' https://testnet.bitfinity.network
 ```
 
 ## Interaction

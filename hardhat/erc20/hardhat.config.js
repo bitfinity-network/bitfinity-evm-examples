@@ -1,10 +1,10 @@
-require("@nomiclabs/hardhat-waffle");
-require("./tasks/account");
-require("./tasks/transfer");
-require("./tasks/totalSupply");
-require("./tasks/balanceOf");
-require("./tasks/approve");
-require("./tasks/transferFrom");
+require('@nomiclabs/hardhat-waffle');
+require('./tasks/account');
+require('./tasks/transfer');
+require('./tasks/totalSupply');
+require('./tasks/balanceOf');
+require('./tasks/approve');
+require('./tasks/transferFrom');
 // Replace this private key with your Bitfinity account private key
 // To export your private key from Metamask, open Metamask and
 // go to Account Details > Export Private Key
@@ -14,10 +14,10 @@ require('dotenv').config();
 const BITFINITY_PRIVATE_KEY = process.env.BITFINITY_PRIVATE_KEY;
 
 module.exports = {
-  solidity: "0.8.0",
+  solidity: '0.8.0',
   networks: {
     testnet_bitfinity: {
-      url: 'https://testnet.bitfinity.dev',
+      url: 'https://testnet.bitfinity.network',
       accounts: [`0x${BITFINITY_PRIVATE_KEY}`],
       chainId: 355113,
     },
@@ -26,6 +26,5 @@ module.exports = {
       accounts: [`0x${BITFINITY_PRIVATE_KEY}`],
       chainId: 355113,
     },
-  }
+  },
 };
-

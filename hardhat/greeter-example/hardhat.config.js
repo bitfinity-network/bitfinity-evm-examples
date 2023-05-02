@@ -22,7 +22,7 @@ module.exports = {
   },
   networks: {
     testnet_bitfinity: {
-      url: 'https://testnet.bitfinity.dev',
+      url: 'https://testnet.bitfinity.network',
       accounts: [`0x${BITFINITY_PRIVATE_KEY}`],
     },
     develop_bitfinity: {

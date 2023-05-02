@@ -46,9 +46,9 @@ module.exports = {
       network_id: '*', // Match any network id
     },
     bitfinity: {
-      provider: () => setupWallet('https://testnet.bitfinity.dev'),
+      provider: () => setupWallet('https://testnet.bitfinity.network'),
       network_id: '355113',
-      from: setupWallet('https://testnet.bitfinity.dev').addresses[0],
+      from: setupWallet('https://testnet.bitfinity.network').addresses[0],
       deploymentPollingInterval: 8000,
       timeoutBlocks: 500,
       confirmations: 10,

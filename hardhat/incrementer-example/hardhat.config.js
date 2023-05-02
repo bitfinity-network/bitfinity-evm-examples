@@ -25,7 +25,7 @@ module.exports = {
   solidity: '0.8.0',
   networks: {
     testnet_bitfinity: {
-      url: 'https://testnet.bitfinity.dev',
+      url: 'https://testnet.bitfinity.network',
       accounts: [`0x${BITFINITY_PRIVATE_KEY}`],
     },
     local_bitfinity: {
