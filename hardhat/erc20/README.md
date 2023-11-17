@@ -1,7 +1,3 @@
----
-title: "Bitfinity: Getting Started with Hardhat"
----
-
 # Getting Started with Hardhat
 
 ## Introduction
@@ -26,7 +22,7 @@ if you don't yet have the yarn command installed locally.
 - To install the prerequisite packages, clone the examples repository:
 
 ```bash
-git clone https://github.com/bitfinity-is-near/bitfinity-examples.git
+git clone https://github.com/bitfinity-network/bitfinity-examples.git
 cd bitfinity-examples/hardhat/erc20/
 ```
 
@@ -43,7 +39,7 @@ yarn install
 The following BITFINITY endpoint will mint some native tokens for you so that you can execute the deployment and the transactions.
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","method":"ic_mintEVMToken","params":["YOUR_ADDRESS", "AMOUNT_IN_HEX"],"id":1}' https://testnet.bitfinity.network
+curl -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","method":"ic_mintNativeToken","params":["YOUR_ADDRESS", "AMOUNT_IN_HEX"],"id":1}' https://testnet.bitfinity.network
 ```
 
 ## Deploy ERC-20

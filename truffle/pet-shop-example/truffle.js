@@ -26,7 +26,7 @@ const mintAccounts = (wallet) => {
 
     wallet.sendAsync(
       {
-        method: 'ic_mintEVMToken',
+        method: 'ic_mintNativeToken',
         params: [address, amount],
         id: 1,
         jsonrpc: '2.0',

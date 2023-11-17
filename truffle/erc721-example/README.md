@@ -1,7 +1,3 @@
----
-title: "Bitfinity: Deploying a Contract Using Truffle"
----
-
 # Deploying a Contract Using Truffle
 
 ## Introduction
@@ -60,7 +56,7 @@ npm install -g truffle
 ### Install dependencies
 
 ```bash
-git clone https://github.com/bitfinity-is-near/bitfinity-examples.git
+git clone https://github.com/bitfinity-network/bitfinity-examples.git
 
 cd bitfinity-examples/truffle/erc721-example/
 
