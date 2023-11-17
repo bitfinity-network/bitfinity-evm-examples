@@ -15,7 +15,7 @@ This repository includes DApp boilerplates for [truffle](https://www.trufflesuit
 - [Truffle](truffle/)
 - [Hardhat](hardhat/)
 
-More documentation about Bitfinity network can be found [here](https://doc.bitfinity.network/).
+More documentation about Bitfinity network can be found [here](https://docs.bitfinity.network/).
 
 ## Contributing
 

@@ -26,7 +26,7 @@ if you don't yet have the yarn command installed locally.
 - To install the prerequisite packages, clone the examples repository:
 
 ```bash
-git clone https://github.com/bitfinity-is-near/bitfinity-examples.git
+git clone https://github.com/bitfinity-network/bitfinity-examples.git
 cd bitfinity-examples/hardhat/erc20/
 ```
 
