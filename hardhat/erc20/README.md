@@ -22,8 +22,8 @@ if you don't yet have the yarn command installed locally.
 - To install the prerequisite packages, clone the examples repository:
 
 ```bash
-git clone https://github.com/bitfinity-network/bitfinity-examples.git
-cd bitfinity-examples/hardhat/erc20/
+git clone https://github.com/bitfinity-network/bitfinity-evm-examples.git
+cd bitfinity-evm-examples/hardhat/erc20/
 ```
 
 - Add your Bitfinity Private key (from MetaMask) to __.env__ file and

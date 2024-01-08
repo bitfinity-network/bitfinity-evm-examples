@@ -34,6 +34,8 @@ async function main() {
     1000000,
     {
       nonce: await deployerWallet.getTransactionCount(),
+      gasLimit: 3000000,
+      gasPrice: 10,
     }
   );
   await watermelonToken.deployed();
