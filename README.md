@@ -1,8 +1,8 @@
 # Bitfinity-Examples
 
-This repository includes DApp boilerplates for [truffle](https://www.trufflesuite.com/) and [hardhat](https://hardhat.org/) examples on Bitfinity. These examples cover specific topics:
+This repository includes DApp boilerplates for [truffle](https://www.trufflesuite.com/), [hardhat](https://hardhat.org/) and [Foundry] (<https://getfoundry.sh/examples/>) on Bitfinity. These examples cover specific topics:
 
-- Solidity contract deployment using (Truffle/Hardhat).
+- Solidity contract deployment using (Truffle/Hardhat/Foundry).
 - Integration with Metamask
 - Running DApp on Bitfinity network
 
@@ -14,6 +14,7 @@ This repository includes DApp boilerplates for [truffle](https://www.trufflesuit
 
 - [Truffle](truffle/)
 - [Hardhat](hardhat/)
+- [Foundry](foundry/)
 
 More documentation about Bitfinity network can be found [here](https://docs.bitfinity.network/).
 

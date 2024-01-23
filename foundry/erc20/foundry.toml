@@ -1,0 +1,21 @@
+[profile.default]
+solc = "0.8.20"
+bytecode_hash = "none"
+optimizer_runs = 1000000
+
+[profile.intense.fuzz]
+runs = 10000
+
+[fmt]
+bracket_spacing = true
+int_types = "long"
+line_length = 120
+multiline_func_header = "all"
+number_underscore = "thousands"
+quote_style = "double"
+tab_width = 4
+wrap_comments = true
+
+
+[rpc_endpoints]
+bitfinity = "${BITFINITY_RPC_URL}"
